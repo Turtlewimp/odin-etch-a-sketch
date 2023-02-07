@@ -8,16 +8,27 @@
     <title>Document</title>
 </head>
 <body>
+    <button>New Sketch Pad</button>
     <div id="container"></div>
 </body>
 <script>
     const container = document.querySelector('#container');
-    
-    for(i = 0; i < (16*16); i++) {
+
+    //default grid
+    for(i = 0; i < (16**2); i++) {
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
+        
         container.appendChild(pixel);
     };
-    
+
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.addEventListener('mouseenter', () => {
+            pixel.setAttribute('id', 'hover');
+        });
+    });
+
+
 </script>
 </html>

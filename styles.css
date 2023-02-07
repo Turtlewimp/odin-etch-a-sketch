@@ -9,3 +9,7 @@
     height: 20px;
     outline: 1px solid lightgray;
 }
+
+#hover {
+    background-color: black;
+}
