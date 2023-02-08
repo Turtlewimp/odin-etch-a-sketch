@@ -9,37 +9,23 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="myFunction()">New Sketch Pad</button>
+    <button>New Sketch Pad</button>
     <div id="container"></div>
 </body>
 <script>
-    const container = document.querySelector('#container');
+    let gridWidth = 16;
+    generateGrid(gridWidth);
+    draw();
 
-    //default grid
-    for(i = 0; i < (16**2); i++) {
-        const pixel = document.createElement('div');
-        pixel.classList.add('pixel');
-        container.appendChild(pixel);
-    };
-
-    //draw
-    const pixels = document.querySelectorAll('.pixel');
-    pixels.forEach((pixel) => {
-        pixel.addEventListener('mouseenter', () => {
-            pixel.setAttribute('id', 'hover');
-        });
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        
+        removeGrid(gridWidth);
+        gridWidth = getNewGridWidth();
+        generateGrid(gridWidth);
+        draw();
+        
     });
-
-    //const button = document.querySelector('button');
-    //button.addEventListener('click', getGridWidth());
-
-    function myFunction() {
-        for(i = 0; i < (16**2); i++) {
-            const container = document.querySelector('#container');
-            const pixel = document.querySelector('.pixel');
-            container.removeChild(pixel);
-        };
-    }
 
 </script>
 </html>

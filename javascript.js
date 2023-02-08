@@ -1,10 +1,4 @@
-//grid generation
-    //popup asking for grid dimensions
-
-//const button = document.querySelector('button');
-    //button.addEventListener('click', () => {removeGrid(); generateGrid(getGridWidth());});
-
-function getGridWidth() {
+function getNewGridWidth() {
     const maxWidth = 100;
     const minWidth = 1;
 
@@ -16,18 +10,15 @@ function getGridWidth() {
 
     gridWidth = Math.abs(gridWidth);
 
-    if (gridWidth < minWidth) console.log(minWidth);
-    if (gridWidth > maxWidth) console.log(maxWidth);
-    console.log(gridWidth);
+    if (gridWidth < minWidth) return minWidth;
+    if (gridWidth > maxWidth) return maxWidth;
 
-    //if (gridWidth < minWidth) return minWidth;
-    //if (gridWidth > maxWidth) return maxWidth;
-
-    //return gridWidth;
+    return gridWidth;
 }
 
-function generateGrid(sideLength) {
-    for(i = 0; i < (sideLength**2); i++) {
+
+function generateGrid(newGridWidth) {
+    for(i = 0; i < (newGridWidth**2); i++) {
         const container = document.querySelector('#container');
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
@@ -35,9 +26,20 @@ function generateGrid(sideLength) {
     }
 }
 
-//function removeGrid
+function removeGrid(oldGridWidth) {
+    for(i = 0; i < (oldGridWidth**2); i++) {
+        const container = document.querySelector('#container');
+        const pixel = document.querySelector('.pixel');
+        if (container !== null) container.removeChild(pixel);
+    };
+}
 
-const pixels = document.querySelectorAll('.pixel');
-pixels.forEach((pixel)=>{container.removeChild(pixel)})
-
-//pixel change
+function draw() {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.addEventListener('mouseenter', () => {
+            pixel.setAttribute('id', 'hover');
+        });
+    });
+}
+    
