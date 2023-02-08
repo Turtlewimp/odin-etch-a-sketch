@@ -16,8 +16,16 @@ function getNewGridWidth() {
     return gridWidth;
 }
 
+function adjustStyle(pxSize, newGridWidth) {
+    //let pxSize = 10;
+    const container = document.querySelector('#container');
+    //const pixel = document.querySelector('.pixel');
+    container.style.cssText = `width: ${newGridWidth*pxSize}px`;
+    //pixel.style.cssText = 'width: ${pxSize}px; height: ${pxSize}px';
+}
 
 function generateGrid(newGridWidth) {
+
     for(i = 0; i < (newGridWidth**2); i++) {
         const container = document.querySelector('#container');
         const pixel = document.createElement('div');
