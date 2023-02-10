@@ -8,7 +8,7 @@ function getNewGridWidth() {
         gridWidth = prompt("Invalid input. Try Again.\nGrid Width: [enter a number] ");
     };
 
-    gridWidth = Math.abs(gridWidth);
+    gridWidth = Math.floor(Math.abs(gridWidth));
 
     if (gridWidth < minWidth) return minWidth;
     if (gridWidth > maxWidth) return maxWidth;
